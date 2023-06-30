@@ -20,16 +20,7 @@ repositories {
 dependencies {
     // This dependency is used by the application.
     implementation("com.google.guava:guava:31.1-jre")
-}
-
-testing {
-    suites {
-        // Configure the built-in test suite
-        val test by getting(JvmTestSuite::class) {
-            // Use JUnit Jupiter test framework
-            useJUnitJupiter("5.9.1")
-        }
-    }
+    runtimeOnly("io.netty:netty-tcnative-boringssl-static:2.0.61.Final")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.

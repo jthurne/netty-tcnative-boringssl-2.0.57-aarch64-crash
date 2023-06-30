@@ -34,10 +34,11 @@ application {
 docker {
     javaApplication {
         baseImage.set("bellsoft/liberica-openjdk-alpine-musl:17.0.7@sha256:195caee86f92aaa7433478320ffdc2265a5e47103785235924acd943e625abe4")
-
     }
 }
 
 tasks.named<Dockerfile>("dockerCreateDockerfile") {
     environmentVariable("JAVA_OPTS", "-XX:+CreateCoredumpOnCrash")
+    instruction("RUN apk add libssl3=3.1.1-r1 libcrypto3=3.1.1-r1")
+    instruction("RUN apk --no-cache add libgomp libstdc++")
 }

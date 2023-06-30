@@ -15,7 +15,8 @@ repositories {
 dependencies {
     // This dependency is used by the application.
     implementation("com.google.guava:guava:31.1-jre")
-    runtimeOnly("io.netty:netty-tcnative-boringssl-static:2.0.61.Final")
+    implementation("io.netty:netty-all:4.1.94.Final")
+    runtimeOnly("io.netty:netty-tcnative-boringssl-static:2.0.61.Final:linux-aarch_64")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
@@ -32,6 +33,11 @@ application {
 
 docker {
     javaApplication {
-        baseImage.set("bellsoft/liberica-openjdk-alpine:17.0.7")
+        baseImage.set("bellsoft/liberica-openjdk-alpine-musl:17.0.7@sha256:195caee86f92aaa7433478320ffdc2265a5e47103785235924acd943e625abe4")
+
     }
+}
+
+tasks.named<Dockerfile>("dockerCreateDockerfile") {
+    environmentVariable("JAVA_OPTS", "-XX:+CreateCoredumpOnCrash")
 }

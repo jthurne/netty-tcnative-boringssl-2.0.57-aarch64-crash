@@ -3,12 +3,14 @@
  */
 package com.example.crash_reproducer;
 
-public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
+import io.netty.handler.ssl.SslContextBuilder;
+import io.netty.handler.ssl.SslProvider;
 
-    public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+import javax.net.ssl.SSLException;
+
+public class App {
+    public static void main(String[] args) throws InterruptedException, SSLException {
+        System.out.println("Initializing SSL (loading netty-tcnative)...");
+        SslContextBuilder.forClient().sslProvider(SslProvider.OPENSSL).build();
     }
 }

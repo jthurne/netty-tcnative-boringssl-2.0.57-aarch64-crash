@@ -13,8 +13,6 @@ repositories {
 dependencies {
     implementation("io.netty:netty-all:4.1.94.Final")
     runtimeOnly("io.netty:netty-tcnative-boringssl-static:2.0.61.Final:linux-aarch_64")
-//    implementation("io.netty:netty-all:4.1.87.Final")
-//    runtimeOnly("io.netty:netty-tcnative-boringssl-static:2.0.56.Final:linux-aarch_64")
 }
 
 java {

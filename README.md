@@ -1,6 +1,6 @@
 # Reproducer project for netty-tcnative-boringssl crash on Alpine for aarch64 (ARM/Apple silicon)
 
-This project reproduces a crash with `netty-tcnative-boringssl-static` from versions `2.0.57.Final` through `2.0.61.Final`.
+This project reproduces a crash with `netty-tcnative-boringssl-static` up to `2.0.61.Final`.
 
 ## Reproducing the issue
 On an Apple M1-based workstation, build the project and run the resulting docker container:

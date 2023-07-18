@@ -13,6 +13,8 @@ repositories {
 dependencies {
     implementation("io.netty:netty-all:4.1.94.Final")
     runtimeOnly("io.netty:netty-tcnative-boringssl-static:2.0.61.Final:linux-aarch_64")
+//    implementation("io.netty:netty-all:4.1.87.Final")
+//    runtimeOnly("io.netty:netty-tcnative-boringssl-static:2.0.56.Final:linux-aarch_64")
 }
 
 java {
@@ -22,7 +24,6 @@ java {
 }
 
 application {
-    // Define the main class for the application.
     mainClass.set("com.example.crash_reproducer.App")
 }
 
@@ -34,6 +35,5 @@ docker {
 
 tasks.named<Dockerfile>("dockerCreateDockerfile") {
     environmentVariable("JAVA_OPTS", "-XX:+CreateCoredumpOnCrash")
-    instruction("RUN apk add libssl3=3.1.1-r1 libcrypto3=3.1.1-r1")
-    instruction("RUN apk --no-cache add libgomp libstdc++")
+    instruction("RUN apk update && apk --no-cache add libc6-compat")
 }

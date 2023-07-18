@@ -11,6 +11,6 @@ import javax.net.ssl.SSLException;
 public class App {
     public static void main(String[] args) throws InterruptedException, SSLException {
         System.out.println("Initializing SSL (loading netty-tcnative)...");
-        SslContextBuilder.forClient().sslProvider(SslProvider.OPENSSL).build();
+        SslContextBuilder.forClient().build();
     }
 }
